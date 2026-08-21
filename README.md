@@ -34,6 +34,17 @@ API REST em Java + Spring Boot com autenticação JWT, login social OAuth2 (Goog
 
 > ⚠️ O backend está hospedado no plano gratuito do Render — a primeira requisição pode levar de 30 a 50 segundos enquanto o serviço "acorda" após período de inatividade.
 
+### 📊 Customer Churn Predictor — Full Stack + Machine Learning
+
+Aplicação full-stack que prevê churn de clientes usando um modelo de Machine Learning (scikit-learn + SHAP), servido via API REST e visualizado em um dashboard React interativo com histórico de previsões salvo em PostgreSQL.
+
+| | Repositório | Descrição | Deploy |
+|---|---|---|---|
+| 🐍 Backend | [churn-predictor](https://github.com/ssergionp/churn-predictor) | Python, FastAPI, scikit-learn, SHAP, PostgreSQL (psycopg3), Docker, GitHub Actions | [API em produção](https://churn-predictor-api-n7lu.onrender.com/docs) |
+| ⚛️ Frontend | [churn-predictor](https://github.com/ssergionp/churn-predictor) | React (Vite), TypeScript, Recharts | [App em produção](https://churn-predictor-lilac.vercel.app) |
+
+> ⚠️ O backend está hospedado no plano gratuito do Render — a primeira requisição pode levar de 30 a 50 segundos enquanto o serviço "acorda" após período de inatividade.
+
 **Destaques técnicos:**
 - Autenticação JWT com access token + refresh token revogável
 - Login social via Google (OAuth2), com vinculação automática de contas por e-mail
