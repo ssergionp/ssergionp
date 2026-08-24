@@ -53,6 +53,20 @@ Encurtador de URLs em Java + Spring Boot focado em conceitos de system design: r
 |---|---|---|
 | ☕ Backend | [url-shortener](https://github.com/ssergionp/url-shortener) | Java 21, Spring Boot 3, Redis, PostgreSQL, Testcontainers, k6, Docker, GitHub Actions |
 
+### 🤖 RAG Legislation Assistant — IA Generativa (Spring AI + Claude)
+
+Chatbot com Retrieval-Augmented Generation (RAG) que responde perguntas sobre normas públicas com base estritamente nos documentos indexados — não no conhecimento geral do modelo. Pipeline completo: ingestão → chunking → embeddings locais (ONNX) → busca vetorial (pgvector) → geração com Claude, com citação das fontes usadas em cada resposta.
+
+| | Repositório | Descrição |
+|---|---|---|
+| ☕ Backend | [rag-legislation-assistant](https://github.com/ssergionp/rag-legislation-assistant) | Java 21, Spring Boot, Spring AI, Claude (Anthropic), PostgreSQL + pgvector, embeddings locais (ONNX) |
+
+**Destaques técnicos:**
+- Pipeline RAG completo (retrieval → augmentation → generation) com Spring AI
+- Prompt de sistema rígido: o modelo se recusa a responder fora do contexto recuperado, evitando alucinação
+- Embeddings gerados localmente (sem custo de API), só a geração final usa a API do Claude
+- Transparência: cada resposta exibe os trechos-fonte usados para gerá-la
+
 **Destaques técnicos:**
 - Rate limiting por IP via Redis (fixed-window counter), com header `Retry-After`
 - Cache-aside pattern: leituras servidas pelo Redis, com fallback e repopulação automática no PostgreSQL
