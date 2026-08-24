@@ -67,6 +67,20 @@ Chatbot com Retrieval-Augmented Generation (RAG) que responde perguntas sobre no
 - Embeddings gerados localmente (sem custo de API), só a geração final usa a API do Claude
 - Transparência: cada resposta exibe os trechos-fonte usados para gerá-la
 
+  ### 🧩 Microservices Task Platform — Distributed Systems (5 serviços)
+
+Domínio de gerenciamento de tarefas dividido em 5 microsserviços independentes: descoberta de serviços (Eureka), API Gateway único, comunicação síncrona resiliente (circuit breaker + retry) e mensageria assíncrona (RabbitMQ). Testado inclusive derrubando um serviço em produção para validar o fallback do circuit breaker.
+
+| | Repositório | Descrição |
+|---|---|---|
+| ☕ Plataforma | [microservices-task-platform](https://github.com/ssergionp/microservices-task-platform) | Java 21, Spring Boot, Spring Cloud (Eureka, Gateway, LoadBalancer), Resilience4j, RabbitMQ, PostgreSQL (database-per-service), Docker Compose, GitHub Actions |
+
+**Destaques técnicos:**
+- Descoberta de serviços com Eureka + roteamento dinâmico via API Gateway (`lb://service-name`)
+- Chamada síncrona entre serviços com circuit breaker + retry (Resilience4j): falha graciosamente com fallback em vez de propagar erro quando uma dependência cai
+- Mensageria assíncrona com RabbitMQ: eventos de "tarefa criada" consumidos de forma totalmente desacoplada
+- Database per service: cada serviço tem seu próprio PostgreSQL, sem acoplamento direto de schema
+
 ### 📊 GitHub Stats
 
 ![Estatísticas do GitHub](https://github-readme-stats.vercel.app/api?username=ssergionp&show_icons=true&theme=default)
