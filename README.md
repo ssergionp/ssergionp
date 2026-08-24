@@ -45,6 +45,20 @@ Aplicação full-stack que prevê churn de clientes usando um modelo de Machine 
 
 > ⚠️ O backend está hospedado no plano gratuito do Render — a primeira requisição pode levar de 30 a 50 segundos enquanto o serviço "acorda" após período de inatividade.
 
+### 🔗 URL Shortener — System Design (Rate Limiting + Caching)
+
+Encurtador de URLs em Java + Spring Boot focado em conceitos de system design: rate limiting (Redis, fixed-window), cache-aside pattern, e testes de carga documentados com k6 (~396 req/s, p95 de 22ms sob carga sustentada).
+
+| | Repositório | Descrição |
+|---|---|---|
+| ☕ Backend | [url-shortener](https://github.com/ssergionp/url-shortener) | Java 21, Spring Boot 3, Redis, PostgreSQL, Testcontainers, k6, Docker, GitHub Actions |
+
+**Destaques técnicos:**
+- Rate limiting por IP via Redis (fixed-window counter), com header `Retry-After`
+- Cache-aside pattern: leituras servidas pelo Redis, com fallback e repopulação automática no PostgreSQL
+- Testes de carga com k6 documentados no README: comparação entre tráfego limitado (rate limiter ativo) e capacidade real do sistema (~396 req/s, 0% de falha)
+- Testes de integração com Testcontainers (PostgreSQL real via Docker)
+
 **Destaques técnicos:**
 - Autenticação JWT com access token + refresh token revogável
 - Login social via Google (OAuth2), com vinculação automática de contas por e-mail
