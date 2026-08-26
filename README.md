@@ -95,6 +95,31 @@ Aplicação que prevê churn de clientes usando Machine Learning (scikit-learn +
 
 <br>
 
+### 🚗 FIPE Explorer — Full Stack (Análise de Dados)
+
+Ferramenta full-stack para buscar, comparar e analisar preços de veículos da Tabela FIPE: busca com filtros combináveis, curva de depreciação por modelo, comparador lado a lado e rankings de marcas por preço médio — construída sobre a importação e normalização de mais de 50 mil registros reais.
+
+![Java](https://img.shields.io/badge/Java_21-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot_3-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)
+![React](https://img.shields.io/badge/React_(Vite)-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Recharts](https://img.shields.io/badge/Recharts-FF6384?style=flat-square)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+
+|                | Repositório                                                  | Descrição                                                                                          |
+| -------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 🚗 Full Stack   | [fipe-explorer](https://github.com/ssergionp/fipe-explorer)   | Busca, curva de depreciação, comparador e rankings sobre +50 mil registros reais da Tabela FIPE      |
+
+**Destaques técnicos:**
+- Import e normalização de +50 mil registros reais da Tabela FIPE num schema relacional (marca, modelo, ano, combustível, preço)
+- Curva de depreciação por modelo com Recharts, tratando corretamente o caso "Zero KM" (eixo categórico, sem distorcer escala) e múltiplos combustíveis no mesmo ano
+- Cálculo de preço médio por marca com correção de viés estatístico: usa o ano mais recente de cada modelo em vez do histórico inteiro, evitando que marcas com mais anos catalogados dominem o ranking
+- Filtros de busca e seleção de comparação refletidos na URL, permitindo compartilhar links de busca e de comparação diretamente
+
+<br>
+
 ### 🔗 URL Shortener — System Design (Rate Limiting + Caching)
 
 Encurtador de URLs focado em conceitos de system design: rate limiting (Redis, fixed-window), cache-aside pattern, e testes de carga documentados com k6 (~396 req/s, p95 de 22ms sob carga sustentada).
