@@ -120,6 +120,31 @@ Ferramenta full-stack para buscar, comparar e analisar preços de veículos da T
 
 <br>
 
+### 📈 ENEM Dashboards — Full Stack (Análise de Dados)
+
+Painel de análise dos microdados abertos do ENEM 2025 (INEP): participação, desempenho por UF/município, perfil socioeconômico e indicadores de qualidade da prova (redação e TRI) — a partir de um ETL sobre CSVs de vários gigabytes, agregado com DuckDB e servido para um painel com mapa coroplético e 13+ gráficos interativos.
+
+![Java](https://img.shields.io/badge/Java_21-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot_3-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+![DuckDB](https://img.shields.io/badge/DuckDB-FFF000?style=flat-square&logo=duckdb&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js_15-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React_19-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![ECharts](https://img.shields.io/badge/ECharts-AA344D?style=flat-square&logo=apacheecharts&logoColor=white)
+![MapLibre GL](https://img.shields.io/badge/MapLibre_GL-396CB2?style=flat-square&logo=mapbox&logoColor=white)
+
+|                | Repositório                                                    | Descrição                                                                                   |
+| -------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| 📊 Full Stack   | [enem-dashboards](https://github.com/ssergionp/enem-dashboards)   | ETL + API (DuckDB) e painel (mapa por UF, rankings, redação, TRI) sobre os microdados do ENEM 2025 |
+
+**Destaques técnicos:**
+- ETL sobre os CSVs brutos do INEP (vários GB cada) com DuckDB como motor analítico embarcado, sem carregar tudo em memória
+- Privacidade por construção: PARTICIPANTES e RESULTADOS não têm chave de ligação individual (removida pelo próprio INEP por exigência da LGPD) — todo agregado é por UF/município/rede, nunca por participante, com supressão de grupos com menos de 10 pessoas
+- Correlação renda × desempenho calculada corretamente como correlação ecológica (por UF), com aviso explícito contra a falácia ecológica na própria UI
+- Mapa coroplético por UF (MapLibre GL) e 13+ gráficos (ECharts) com paleta validada para daltonismo/contraste, dark mode nativo e filtro de UF único que recorta todo o painel
+
+<br>
+
 ### 🔗 URL Shortener — System Design (Rate Limiting + Caching)
 
 Encurtador de URLs focado em conceitos de system design: rate limiting (Redis, fixed-window), cache-aside pattern, e testes de carga documentados com k6 (~396 req/s, p95 de 22ms sob carga sustentada).
